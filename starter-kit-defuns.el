@@ -86,6 +86,9 @@ Symbols matching the text at point are put first in the completion list."
 (defun turn-on-whitespace ()
   (whitespace-mode t))
 
+(defun turn-on-paredit ()
+  (paredit-mode t))
+
 (defun turn-off-tool-bar ()
   (tool-bar-mode -1))
 
@@ -146,7 +149,7 @@ Symbols matching the text at point are put first in the completion list."
   (interactive)
   (byte-recompile-directory dotfiles-dir 0)
   ;; TODO: remove elpa-to-submit once everything's submitted.
-  (byte-recompile-directory (concat dotfiles-dir "elpa-to-submit/" 0)))
+  (byte-recompile-directory (concat dotfiles-dir "elpa-to-submit/") 0))
 
 (defun regen-autoloads (&optional force-regen)
   "Regenerate the autoload definitions file if necessary and load it."
@@ -199,10 +202,22 @@ Symbols matching the text at point are put first in the completion list."
 
 (defun esk-paredit-nonlisp ()
   "Turn on paredit mode for non-lisps."
-  (set (make-local-variable 'paredit-space-for-delimiter-predicate)
-       (lambda (endp delimiter)
-         (equal (char-syntax (char-before)) ?\")))
+  (set (make-local-variable 'paredit-space-delimiter-chars)
+       (list ?\"))
   (paredit-mode 1))
+
+(defun message-point ()
+  (interactive)
+  (message "%s" (point)))
+
+(defun toggle-fullscreen ()
+  (interactive)
+  ;; TODO: this only works for X. patches welcome for other OSes.
+  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+                         '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
+  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+                         '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
+
 
 ;; A monkeypatch to cause annotate to ignore whitespace
 (defun vc-git-annotate-command (file buf &optional rev)
