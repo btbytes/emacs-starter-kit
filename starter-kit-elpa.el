@@ -6,6 +6,8 @@
                                    'ruby-mode
                                    'inf-ruby
                                    'css-mode
+                                   'haml-mode
+                                   'json
                                    'gist)
   "Libraries that should be installed by default.")
 
