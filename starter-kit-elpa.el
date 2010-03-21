@@ -8,6 +8,11 @@
                                    'css-mode
                                    'haml-mode
                                    'json
+                                   'clojure-mode
+                                   'clojure-test-mode
+                                   'swank-clojure
+                                   'slime
+                                   'slime-repl
                                    'gist)
   "Libraries that should be installed by default.")
 
