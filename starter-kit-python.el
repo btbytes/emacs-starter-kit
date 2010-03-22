@@ -7,7 +7,7 @@
      (global-set-key (kbd "RET") 'reindent-then-newline-and-indent)))
 
 (global-set-key (kbd "C-h p") 'python-shell)
-(add-hook 'ruby-mode-hook 'idle-highlight)
+(add-hook 'python-mode-hook 'idle-highlight)
 
 ;;; Flymake
 
