@@ -4,6 +4,16 @@
 
 ;; You know, like Readline.
 (global-set-key (kbd "C-M-h") 'backward-kill-word)
+(global-set-key (kbd "C-w") 'backward-kill-word)
+
+;The generic apropos (of any symbol) is MUCH more useful than apropos-command
+(global-set-key "\C-ha" 'apropos)
+
+(global-set-key "\C-x\C-k" 'kill-region) ;; alternative for old C-w
+(global-set-key "\C-c\C-k" 'kill-region) ;; copy for slippery fingers
+(global-set-key (kbd "C-;") 'ibuffer)
+(global-set-key (kbd "M-g") 'goto-line)
+
 
 ;; Align your code in a pretty way.
 (global-set-key (kbd "C-x \\") 'align-regexp)
@@ -43,6 +53,12 @@
 (windmove-default-keybindings) ;; Shift+direction
 (global-set-key (kbd "C-x O") (lambda () (interactive) (other-window -1))) ;; back one
 (global-set-key (kbd "C-x C-o") (lambda () (interactive) (other-window 2))) ;; forward two
+
+                                        ; Vim style keyboard moving
+(global-set-key (kbd "C-M-l") 'windmove-right)
+(global-set-key (kbd "C-M-h") 'windmove-left)
+(global-set-key (kbd "C-M-j") 'windmove-down)
+(global-set-key (kbd "C-M-k") 'windmove-up)
 
 ;; Indentation help
 (global-set-key (kbd "C-x ^") 'join-line)
