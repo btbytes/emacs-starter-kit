@@ -13,6 +13,8 @@
                                    'swank-clojure
                                    'slime
                                    'slime-repl
+                                   'yaml-mode
+                                   'magit
                                    'gist)
   "Libraries that should be installed by default.")
 
