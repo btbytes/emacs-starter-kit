@@ -16,3 +16,12 @@
 (global-set-key (kbd "C-M-j") 'windmove-down)
 (global-set-key (kbd "C-M-k") 'windmove-up)
 (global-set-key (kbd "RET") 'newline-and-indent)
+
+
+(require 'yasnippet)
+(setq yas/root-directory "~/.emacs.d/elpa-to-submit/snippets")
+(yas/load-directory yas/root-directory)
+(require 'dropdown-list)
+(setq yas/prompt-functions '(yas/dropdown-prompt
+                             yas/ido-prompt
+                             yas/completing-prompt))
