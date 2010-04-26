@@ -1,5 +1,7 @@
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
+(setq truncate-lines t)
+
 (global-set-key (kbd "C-w") 'backward-kill-word)
 
 ;;The generic apropos (of any symbol) is MUCH more useful than apropos-command
@@ -16,6 +18,7 @@
 (global-set-key (kbd "C-M-j") 'windmove-down)
 (global-set-key (kbd "C-M-k") 'windmove-up)
 (global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "M-.") 'find-tag-other-window)
 
 
 (require 'yasnippet)
@@ -25,3 +28,8 @@
 (setq yas/prompt-functions '(yas/dropdown-prompt
                              yas/ido-prompt
                              yas/completing-prompt))
+
+(when (string= "x" window-system)
+  ;; Linux-Specific Settings
+  (set-default-font
+   "-unknown-ProggyCleanTT-normal-normal-normal-*-*-*-*-*-m-0-iso10646-1"))
