@@ -25,3 +25,6 @@
 (setq yas/prompt-functions '(yas/dropdown-prompt
                              yas/ido-prompt
                              yas/completing-prompt))
+
+(setq eval-expression-print-length nil) ; don't limit error msg length
+
