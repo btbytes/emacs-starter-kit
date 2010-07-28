@@ -2,13 +2,13 @@
 ;; custom config/bindings.
 ;;
 
-;;C-c ms magit-status
+;; C-c ms magit-status
 (global-set-key (kbd "C-c ms") 'magit-status)
 
-;;Line truncation. See http://bit.ly/bzFM05
-(setq truncate-lines t)
+;; Line truncation. See http://bit.ly/bzFM05
+;;(setq truncate-lines t)
 
-;; color theme
+;; Colour theme
 (require 'color-theme)
 (color-theme-zenburn)
 
@@ -16,7 +16,6 @@
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
 
 ;; whitespace mode.
-
 (require 'whitespace)
 (autoload 'whitespace-mode
   "whitespace" "Toggle whitespace visualization." t)
@@ -27,3 +26,4 @@
 (global-set-key "\C-c_t" 'whitespace-toggle-options)
 (global-set-key "\C-c=w" 'global-whitespace-mode)
 (global-set-key "\C-c=t" 'global-whitespace-toggle-options)
+(global-set-key "\C-cwc" 'whitespace-cleanup)
