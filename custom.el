@@ -2,7 +2,13 @@
 ;; custom config/bindings.
 ;;
 
-;; C-c ms magit-status
+;; show column number
+(setq column-number-mode t)
+
+;;Comment or Uncomment C-c #
+(global-set-key "\C-c#"  'comment-or-uncomment-region)
+
+;; magit-status C-c ms
 (global-set-key (kbd "C-c ms") 'magit-status)
 
 ;; Line truncation. See http://bit.ly/bzFM05
@@ -12,8 +18,6 @@
 (require 'color-theme)
 (color-theme-zenburn)
 
-;; ;; (require 'pandoc)
-(add-hook 'markdown-mode-hook 'turn-on-pandoc)
 
 ;; whitespace mode.
 (require 'whitespace)
@@ -27,3 +31,29 @@
 (global-set-key "\C-c=w" 'global-whitespace-mode)
 (global-set-key "\C-c=t" 'global-whitespace-toggle-options)
 (global-set-key "\C-cwc" 'whitespace-cleanup)
+
+;; custom whitespace setup.
+(setq whitespace-style '(trailing
+                         lines
+                         space-before-tab
+                         indentation
+                         space-after-tab)
+      whitespace-line-column 80)
+
+
+;; pandoc
+
+(require 'pandoc-mode)
+(add-hook 'markdown-mode-hook 'turn-on-pandoc)
+;; (autoload 'pandoc-mode "pandoc-mode" "Pandoc Mode." t)
+(add-to-list 'auto-mode-alist '("\\.page\\'" . markdown-mode))
+
+
+;; TODO
+;; Flymake and python
+;; see: http://plope.com/Members/chrism/flymake-mode
+
+;; virtualenvwrapper aware Flymake
+;; . show currently active python interpreter in the status bar?
+
+
