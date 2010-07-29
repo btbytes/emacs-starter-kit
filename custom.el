@@ -5,6 +5,11 @@
 ;; show column number
 (setq column-number-mode t)
 
+;; highlight current line. Uses highline package.
+;; XXX: fix highlight colour before using this.
+;;(highline-mode-on)
+
+
 ;;Comment or Uncomment C-c #
 (global-set-key "\C-c#"  'comment-or-uncomment-region)
 
@@ -19,15 +24,13 @@
             (define-key magit-mode-map (kbd "C-c sa") 'magit-stage-all)
             )
           )
-;;(global-set-key (kbd "C-c sa") 'magit-stage-all)
 
 ;; Line truncation. See http://bit.ly/bzFM05
 ;;(setq truncate-lines t)
 
 ;; Colour theme
 (require 'color-theme)
-(color-theme-zenburn)
-
+;;(color-theme-zenburn)
 
 ;; whitespace mode.
 (require 'whitespace)
@@ -50,10 +53,8 @@
                          space-after-tab)
       whitespace-line-column 80)
 
-
 ;; pandoc
-
-(require 'pandoc-mode)
+(require 'pandoc-mode) ;;XXX: should this be loaded only on need?
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
 ;; (autoload 'pandoc-mode "pandoc-mode" "Pandoc Mode." t)
 (add-to-list 'auto-mode-alist '("\\.page\\'" . markdown-mode))
@@ -66,4 +67,7 @@
 ;; virtualenvwrapper aware Flymake
 ;; . show currently active python interpreter in the status bar?
 
+;; bit.ly shortcuts from within emacs
+
+;; enable and use snippets. (yasnippet?)
 
