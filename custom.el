@@ -17,6 +17,19 @@
 ;; magit-status C-c ms
 (global-set-key (kbd "C-c ms") 'magit-status)
 
+;; insert date in YYYY-MM-DD format
+(defvar iso-date-format "%Y-%m-%d"
+  "Format of date to insert with `insert-iso-date' func
+See help of `format-time-string' for possible replacements")
+
+(defun insert-iso-date ()
+  "insert today's date into the current buffer"
+  (interactive)
+  (insert (format-time-string iso-date-format (current-time)))
+  )
+(global-set-key "\C-c\C-d" 'insert-iso-date)
+
+
 ;; This hook is activated only when the magit-mode is active.
 ;; See http://xahlee.org/emacs/keyboard_shortcuts.html
 (add-hook 'magit-mode-hook
@@ -58,7 +71,6 @@
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
 ;; (autoload 'pandoc-mode "pandoc-mode" "Pandoc Mode." t)
 (add-to-list 'auto-mode-alist '("\\.page\\'" . markdown-mode))
-
 
 ;; TODO
 ;; Flymake and python
