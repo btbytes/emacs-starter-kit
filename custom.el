@@ -9,7 +9,6 @@
 ;; XXX: fix highlight colour before using this.
 ;;(highline-mode-on)
 
-
 ;;Comment or Uncomment C-c #
 (global-set-key "\C-c#"  'comment-or-uncomment-region)
 
@@ -30,7 +29,7 @@
 
 ;; Colour theme
 (require 'color-theme)
-;;(color-theme-zenburn)
+(color-theme-zenburn)
 
 ;; whitespace mode.
 (require 'whitespace)
@@ -54,7 +53,7 @@
       whitespace-line-column 80)
 
 ;; pandoc
-(require 'pandoc-mode) ;;XXX: should this be loaded only on need?
+(require 'pandoc-mode)
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
 ;; (autoload 'pandoc-mode "pandoc-mode" "Pandoc Mode." t)
 (add-to-list 'auto-mode-alist '("\\.page\\'" . markdown-mode))
@@ -63,11 +62,10 @@
 ;; TODO
 ;; Flymake and python
 ;; see: http://plope.com/Members/chrism/flymake-mode
+;; Ropeemacs
 
 ;; virtualenvwrapper aware Flymake
 ;; . show currently active python interpreter in the status bar?
 
 ;; bit.ly shortcuts from within emacs
-
-;; enable and use snippets. (yasnippet?)
 
