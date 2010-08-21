@@ -43,7 +43,7 @@ See help of `format-time-string' for possible replacements")
 
 ;; Colour theme
 (require 'color-theme)
-;;(color-theme-zenburn)
+(color-theme-zenburn)
 
 ;; whitespace mode.
 (require 'whitespace)
@@ -71,6 +71,14 @@ See help of `format-time-string' for possible replacements")
 (add-hook 'markdown-mode-hook 'turn-on-pandoc)
 ;; (autoload 'pandoc-mode "pandoc-mode" "Pandoc Mode." t)
 (add-to-list 'auto-mode-alist '("\\.page\\'" . markdown-mode))
+
+;; slime
+;; set up the Common Lisp environment
+
+;;(add-to-list 'load-path "/usr/share/common-lisp/source/slime/")
+;;(setq inferior-lisp-program "/usr/bin/sbcl")
+;;(require 'slime)
+;;(slime-setup)
 
 ;; TODO
 ;; Flymake and python
