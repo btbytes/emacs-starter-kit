@@ -73,6 +73,13 @@ See help of `format-time-string' for possible replacements")
 
 ;; ESS
 (require 'ess-site)
+
+;; zencoding
+(require 'zencoding-mode)
+(add-hook 'nxml-mode-hook 'zencoding-mode)
+(global-set-key (kbd "C-c [") 'zencoding-expand-line)
+(global-set-key (kbd "C-c ]") 'zencoding-preview-accept)
+
 ;; golang
 
 ;; slime
