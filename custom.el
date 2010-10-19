@@ -72,6 +72,9 @@ See help of `format-time-string' for possible replacements")
 (add-to-list 'auto-mode-alist '("\\.page\\'" . markdown-mode))
 
 ;; ESS
+(if (eq system-type 'darwin)
+    (add-to-list 'load-path "~/elisp/ess/lisp")
+    )
 (require 'ess-site)
 
 ;; zencoding
