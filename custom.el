@@ -76,6 +76,13 @@ See help of `format-time-string' for possible replacements")
     (add-to-list 'load-path "~/elisp/ess/lisp")
     )
 (require 'ess-site)
+
+;; zencoding
+(require 'zencoding-mode)
+(add-hook 'nxml-mode-hook 'zencoding-mode)
+(global-set-key (kbd "C-c [") 'zencoding-expand-line)
+(global-set-key (kbd "C-c ]") 'zencoding-preview-accept)
+
 ;; golang
 
 ;; slime
