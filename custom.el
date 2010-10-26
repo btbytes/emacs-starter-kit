@@ -74,6 +74,10 @@
 
 ;; ASCIIdoc
 (require 'asciidoc)
+;; c-mode
+(add-hook 'c-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c 9") 'compile )))
 
 ;; golang
 
