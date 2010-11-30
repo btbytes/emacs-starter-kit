@@ -10,9 +10,6 @@
                                    'css-mode
                                    'haml-mode
                                    'json
-                                   'clojure-mode
-                                   'clojure-test-mode
-                                   'swank-clojure
                                    'slime
                                    'slime-repl
                                    'yaml-mode
@@ -20,6 +17,10 @@
                                    'magit
                                    'gist)
   "Libraries that should be installed by default.")
+
+;;'clojure-mode
+;;'clojure-test-mode
+;;'swank-clojure
 
 (defun starter-kit-elpa-install ()
   "Install all starter-kit packages that aren't installed."

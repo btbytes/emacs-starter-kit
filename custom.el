@@ -13,7 +13,8 @@
 (global-set-key "\C-c#"  'comment-or-uncomment-region)
 
 ;; Make
-(global-set-key "C-c 9" 'compile)
+;;(global-set-key "C-c 9" 'compile)
+
 ;; magit
 ;; magit-status C-c ms
 (global-set-key (kbd "C-c ms") 'magit-status)
@@ -69,24 +70,25 @@
 ;; zencoding
 (require 'zencoding-mode)
 (add-hook 'nxml-mode-hook 'zencoding-mode)
-;;(global-set-key (kbd "C-c [") 'zencoding-expand-line)
+(global-set-key (kbd "C-c [") 'zencoding-expand-line)
 (global-set-key (kbd "C-c ]") 'zencoding-preview-accept)
 
 ;; ASCIIdoc
-(require 'asciidoc)
+;;(require 'asciidoc)
+
 ;; c-mode
 (add-hook 'c-mode-hook
           (lambda ()
-            (local-set-key (kbd "C-c 9") 'compile )))
+           (local-set-key (kbd "C-c 9") 'compile )))
 
 ;; golang
 
 ;; slime
 ;; set up the Common Lisp environment
 
-;;(add-to-list 'load-path "/usr/share/common-lisp/source/slime/")
-;;(setq inferior-lisp-program "/usr/bin/sbcl")
-;;(require 'slime)
+(add-to-list 'load-path "/usr/share/common-lisp/source/slime/")
+(setq inferior-lisp-program "/usr/bin/sbcl")
+(require 'slime)
 ;;(slime-setup)
 
 ;; TODO
