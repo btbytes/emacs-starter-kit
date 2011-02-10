@@ -85,11 +85,23 @@
 
 ;; slime
 ;; set up the Common Lisp environment
-
 (add-to-list 'load-path "/usr/share/common-lisp/source/slime/")
 (setq inferior-lisp-program "/usr/bin/sbcl")
+;; quicklisp
+(if (file-exists-p "~/quicklisp/slime-helper.el")
+    (load (expand-file-name "~/quicklisp/slime-helper.el"))
+  (message "Install Quicklisp?")
+  )
 (require 'slime)
-;;(slime-setup)
+(slime-setup)
+
+;; vala mode
+
+(autoload 'vala-mode "vala-mode" "Major mode for editing Vala code." t)
+(add-to-list 'auto-mode-alist '("\\.vala$" . vala-mode))
+(add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
+(add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
+(add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
 
 ;; TODO
 ;; Flymake and python
