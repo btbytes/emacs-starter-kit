@@ -14,6 +14,10 @@
 ;;Comment or Uncomment C-c #
 (global-set-key "\C-c#"  'comment-or-uncomment-region)
 
+
+;; Make
+;;(global-set-key "C-c 9" 'compile)
+
 ;; magit
 ;; magit-status C-c ms
 (global-set-key (kbd "C-c ms") 'magit-status)
@@ -69,7 +73,7 @@
 ;; zencoding
 (require 'zencoding-mode)
 (add-hook 'nxml-mode-hook 'zencoding-mode)
-;;(global-set-key (kbd "C-c [") 'zencoding-expand-line)
+(global-set-key (kbd "C-c [") 'zencoding-expand-line)
 (global-set-key (kbd "C-c ]") 'zencoding-preview-accept)
 
 ;; ASCIIdoc
@@ -78,17 +82,32 @@
 ;; c-mode
 (add-hook 'c-mode-hook
           (lambda ()
-            (local-set-key (kbd "C-c 9") 'compile )))
+           (local-set-key (kbd "C-c 9") 'compile )))
 
 ;; golang
 
 ;; slime
 ;; set up the Common Lisp environment
-
 (add-to-list 'load-path (concat homedir "/elisp/slime"))
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (require 'slime)
 (slime-setup)
+;; quicklisp
+(if (file-exists-p  (concat homedir "/quicklisp/slime-helper.el"))
+    (load (expand-file-name "~/quicklisp/slime-helper.el"))
+  (message "Install Quicklisp?")
+  )
+(require 'slime)
+(slime-setup)
+
+;; vala mode
+
+(autoload 'vala-mode "vala-mode" "Major mode for editing Vala code." t)
+(add-to-list 'auto-mode-alist '("\\.vala$" . vala-mode))
+(add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
+(add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
+(add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
+>>>>>>> ae785ac39d0816fcaa911580695602fc069515c8
 
 ;; TODO
 ;; Flymake and python
