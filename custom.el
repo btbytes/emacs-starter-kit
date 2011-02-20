@@ -107,7 +107,9 @@
 (add-to-list 'auto-mode-alist '("\\.vapi$" . vala-mode))
 (add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
 (add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
->>>>>>> ae785ac39d0816fcaa911580695602fc069515c8
+
+;; using technomancy's marmalade.
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 ;; TODO
 ;; Flymake and python
