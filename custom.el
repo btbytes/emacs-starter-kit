@@ -2,7 +2,9 @@
 ;; custom config/bindings.
 ;;
 
-;; show column number
+;; setup some variables.
+(defvar homedir (concat (getenv "HOME") "/"))
+;; and constants
 (setq column-number-mode t)
 
 ;; highlight current line. Uses highline package.
@@ -12,8 +14,6 @@
 ;;Comment or Uncomment C-c #
 (global-set-key "\C-c#"  'comment-or-uncomment-region)
 
-;; Make
-(global-set-key "C-c 9" 'compile)
 ;; magit
 ;; magit-status C-c ms
 (global-set-key (kbd "C-c ms") 'magit-status)
@@ -73,7 +73,8 @@
 (global-set-key (kbd "C-c ]") 'zencoding-preview-accept)
 
 ;; ASCIIdoc
-(require 'asciidoc)
+;;(require 'asciidoc)
+
 ;; c-mode
 (add-hook 'c-mode-hook
           (lambda ()
@@ -84,10 +85,10 @@
 ;; slime
 ;; set up the Common Lisp environment
 
-;;(add-to-list 'load-path "/usr/share/common-lisp/source/slime/")
-;;(setq inferior-lisp-program "/usr/bin/sbcl")
-;;(require 'slime)
-;;(slime-setup)
+(add-to-list 'load-path (concat homedir "/elisp/slime"))
+(setq inferior-lisp-program "/usr/bin/sbcl")
+(require 'slime)
+(slime-setup)
 
 ;; TODO
 ;; Flymake and python
