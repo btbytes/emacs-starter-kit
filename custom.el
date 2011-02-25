@@ -94,7 +94,7 @@
 (slime-setup)
 ;; quicklisp
 (if (file-exists-p  (concat homedir "/quicklisp/slime-helper.el"))
-    (load (expand-file-name "~/quicklisp/slime-helper.el"))
+    (load (expand-file-name (concat homedir "/quicklisp/slime-helper.el") ))
   (message "Install Quicklisp?")
   )
 (require 'slime)
