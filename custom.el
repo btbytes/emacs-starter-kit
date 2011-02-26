@@ -4,8 +4,16 @@
 
 ;; setup some variables.
 (defvar homedir (concat (getenv "HOME") "/"))
+
 ;; and constants
 (setq column-number-mode t)
+
+;; UTILITY FUNCTIONS
+(defun load-if-exists (path name)
+  "Load library if it exists in the path"
+  (if (file-exists-p path)
+      (progn (add-to-list 'load-path path)
+             (require name))))
 
 ;; highlight current line. Uses highline package.
 ;; XXX: fix highlight colour before using this.
@@ -65,10 +73,7 @@
 (add-to-list 'auto-mode-alist '("\\.page\\'" . markdown-mode))
 
 ;; ESS
-(if (eq system-type 'darwin)
-    (add-to-list 'load-path "~/elisp/ess/lisp")
-    )
-(require 'ess-site)
+(load-if-exists (concat homedir "elisp/ess/lisp")  'ess-site)
 
 ;; zencoding
 (require 'zencoding-mode)
@@ -92,6 +97,7 @@
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (require 'slime)
 (slime-setup)
+
 ;; quicklisp
 (if (file-exists-p  (concat homedir "/quicklisp/slime-helper.el"))
     (load (expand-file-name (concat homedir "/quicklisp/slime-helper.el") ))
@@ -108,8 +114,44 @@
 (add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
 (add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
 
-;; using technomancy's marmalade.
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; use technomancy's marmalade.
+;;(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+
+
+;; chicken scheme
+(require 'cmuscheme)
+
+(define-key scheme-mode-map "\C-c\C-l" 'scheme-load-current-file)
+(define-key scheme-mode-map "\C-c\C-k" 'scheme-compile-current-file)
+
+(defun scheme-load-current-file (&optional switch)
+  (interactive "P")
+  (let ((file-name (buffer-file-name)))
+    (comint-check-source file-name)
+    (setq scheme-prev-l/c-dir/file (cons (file-name-directory    file-name)
+                                         (file-name-nondirectory file-name)))
+    (comint-send-string (scheme-proc) (concat "(load \""
+                                              file-name
+                                              "\"\)\n"))
+    (if switch
+        (switch-to-scheme t)
+        (message "\"%s\" loaded." file-name) ) ) )
+
+(defun scheme-compile-current-file (&optional switch)
+  (interactive "P")
+  (let ((file-name (buffer-file-name)))
+    (comint-check-source file-name)
+    (setq scheme-prev-l/c-dir/file (cons (file-name-directory    file-name)
+                                         (file-name-nondirectory file-name)))
+    (message "compiling \"%s\" ..." file-name)
+    (comint-send-string (scheme-proc) (concat "(compile-file \""
+                                              file-name
+                                              "\"\)\n"))
+    (if switch
+        (switch-to-scheme t)
+        (message "\"%s\" compiled and loaded." file-name) ) ) )
+
+
 
 ;; TODO
 ;; Flymake and python
