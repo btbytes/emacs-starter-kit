@@ -1,0 +1,3 @@
+[submodule "radiance"]
+path = themes/radiance
+url = git://github.com/barak/color-theme-radiance.git 
