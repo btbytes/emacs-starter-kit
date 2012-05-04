@@ -68,7 +68,15 @@
 
 ;; pandoc
 (require 'pandoc-mode)
-(add-hook 'markdown-mode-hook 'turn-on-pandoc)
+(defun markdown-custom ()
+    "markdown-mode-hook"
+      (setq markdown-command "pandoc --standalone"))
+
+(add-hook 'markdown-mode-hook '(lambda ()
+                                  (markdown-custom)
+                                  (turn-on-pandoc)))
+
+;; (add-hook 'markdown-mode-hook 'turn-on-pandoc)
 ;; (autoload 'pandoc-mode "pandoc-mode" "Pandoc Mode." t)
 (add-to-list 'auto-mode-alist '("\\.page\\'" . markdown-mode))
 
